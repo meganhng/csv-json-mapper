@@ -1,0 +1,69 @@
+{
+  "6503199ec813b8caad0af085": {
+    "organizationId": "6503199ec813b8caad0af082",
+    "audienceId": "6503199ec813b8caad0af085",
+    "campaignId": "6503199ec813b8caad0af08c",
+    "bids": {
+      "CA": {
+        "country": "CA",
+        "targetMaxBid": "200000"
+      },
+      "US": {
+        "country": "US",
+        "targetMaxBid": "500000000"
+      }
+    }
+  },
+  "65032519c813b8caad0af81d": {
+    "organizationId": "6503199ec813b8caad0af084",
+    "audienceId": "65032519c813b8caad0af81d",
+    "campaignId": "65032797c813b8caad0af859",
+    "bids": {
+      "FR": {
+        "country": "FR",
+        "targetMaxBid": "345000000"
+      },
+      "TW": {
+        "country": "TW",
+        "targetMaxBid": "24000000"
+      }
+    }
+  },
+  "65032519c813b8caad0af816": {
+    "organizationId": "6503199ec813b8caad0af084",
+    "audienceId": "65032519c813b8caad0af816",
+    "campaignId": "65032797c813b8caad0af85b",
+    "bids": {
+      "CH": {
+        "country": "CH",
+        "targetMaxBid": "12000000"
+      }
+    }
+  },
+  "650326dec813b8caad0af83d": {
+    "organizationId": "650326d4c813b8caad0af826",
+    "audienceId": "650326dec813b8caad0af83d",
+    "campaignId": "650326e8c813b8caad0af84f",
+    "bids": {
+      "CA": {
+        "country": "CA",
+        "targetMaxBid": "203000000"
+      },
+      "CH": {
+        "country": "CH",
+        "targetMaxBid": "5000000000"
+      }
+    }
+  },
+  "65032797c813b8caad0af855": {
+    "organizationId": "65032797c813b8caad0af860",
+    "audienceId": "65032797c813b8caad0af855",
+    "campaignId": "65032797c813b8caad0af859",
+    "bids": {
+      "US": {
+        "country": "US",
+        "targetMaxBid": "99400000"
+      }
+    }
+  }
+}
