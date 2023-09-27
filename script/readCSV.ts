@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import {parse} from 'csv-parse';
+import {parse} from 'csv-parse/sync';
 
 export type FormattedData = {
   [audienceId: string]: {
@@ -15,44 +15,53 @@ export type FormattedData = {
   };
 };
 
-let formattedData: FormattedData = {}
+export type RoasBidsData = {
+  [audienceId: string]: {
+    organizationId: string;
+    audienceId: string;
+    campaignId: string;
+    bids: {
+      [country: string]: {
+        country: string;
+        targetMaxBid: number;
+      };
+    };
+  };
+};
 
-/**
-Org ID
-Campaign ID -> audienceId
-Campaign Set ID -> campaign Id
-GEO
-Current Max Bid value
-Target Max Bid value (from csv file?)
- */
+export type roasBidsDataset = {
+  organizationId: string;
+  campaignSetId: string;
+  campaignId: string;
+  country: string;
+  currentMaxBid: string;
+  targetMaxBid: number;
+};
 
-fs.createReadStream("data/mock-campaign-data.csv")
-  .pipe(parse({ delimiter: ",", from_line: 2 }))
-  .on("data", function (row) {
-    console.log("row", row);
 
-    const [organizationId, campaignId, campaignSetId, country, currMaxBid, targetMaxBid] = row;
+  const roasBids: RoasBidsData = {};
 
-    if (formattedData[campaignId]){
-      formattedData[campaignId].bids[country] = {country, targetMaxBid}
-    }
-    else{
-      formattedData[campaignId] = {
-        organizationId,
-        audienceId: campaignId,
-        campaignId: campaignSetId,
-        bids: {
-          [country]: {country, targetMaxBid}
-        }
+  const fileContent = fs.readFileSync('data/mock-campaign-data.csv', { encoding: 'utf-8' });
+
+  const records = parse(fileContent, { delimiter: ',', from_line: 1, columns:true });
+  console.log("records", records)
+
+  records.forEach(
+    (row: roasBidsDataset) => {
+      const {organizationId, campaignId, campaignSetId, country, currentMaxBid, targetMaxBid} = row
+      if (roasBids[campaignId]) {
+        roasBids[campaignId].bids[country] = { country, targetMaxBid };
+      } else {
+        roasBids[campaignId] = {
+          organizationId,
+          audienceId: campaignId,
+          campaignId: campaignSetId,
+          bids: {
+            [country]: { country, targetMaxBid },
+          },
+        };
       }
-    }
+    },
+  );
 
-    console.log("formattedData", formattedData)
-  })
-  .on("end", function () {
-    console.log("finished");
-    fs.writeFileSync('data/output/data.json', JSON.stringify(formattedData, null, 2) , 'utf-8');
-  })
-  .on("error", function (error) {
-    console.log(error.message);
-  });
+console.log(roasBids)

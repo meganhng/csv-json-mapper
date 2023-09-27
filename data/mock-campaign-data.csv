@@ -1,4 +1,4 @@
-Organization Id,Campaign Id,Campaign Set Id, Country,Current Max Bid,Target Max Bid
+organizationId,campaignId,campaignSetId,country,currentMaxBid,targetMaxBid
 6503199ec813b8caad0af082,6503199ec813b8caad0af085,6503199ec813b8caad0af08c,CA,100000,200000
 6503199ec813b8caad0af082,6503199ec813b8caad0af085,6503199ec813b8caad0af08c,US,4000,500000000
 6503199ec813b8caad0af084,65032519c813b8caad0af81d,65032797c813b8caad0af859,FR,2224444,345000000
